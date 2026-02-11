@@ -6,21 +6,47 @@
     <title>Dla Ciebie ❤️</title>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        body { margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #fff0f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; overflow: hidden; }
-        .container { width: 90%; max-width: 400px; background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; position: relative; }
-        .image-box { width: 100%; height: 250px; margin-bottom: 20px; border-radius: 20px; overflow: hidden; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; }
+        /* TŁO W SERDUSZKA */
+        body { 
+            margin: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-height: 100vh; 
+            background-color: #ffdae9; 
+            background-image: radial-gradient(#ffb6c1 20%, transparent 20%), radial-gradient(#ffb6c1 20%, transparent 20%);
+            background-position: 0 0, 50px 50px;
+            background-size: 100px 100px;
+            font-family: 'Segoe UI', sans-serif; 
+            overflow: hidden; 
+        }
+
+        .container { 
+            width: 90%; 
+            max-width: 400px; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 30px; 
+            border-radius: 30px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            text-align: center; 
+            position: relative; 
+            backdrop-filter: blur(5px);
+            border: 2px solid #ffffff;
+        }
+
+        .image-box { width: 100%; height: 250px; margin-bottom: 20px; border-radius: 20px; overflow: hidden; background-color: #fff; display: flex; align-items: center; justify-content: center; }
         .gif { width: 100%; height: 100%; object-fit: contain; }
-        h1 { color: #d6336c; font-size: 1.3rem; margin-bottom: 25px; min-height: 50px; line-height: 1.4; }
+        h1 { color: #d6336c; font-size: 1.3rem; margin-bottom: 25px; min-height: 50px; }
         .buttons { display: flex; gap: 15px; justify-content: center; align-items: center; min-height: 60px; }
-        button { padding: 15px 25px; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: transform 0.2s, background-color 0.2s; }
+        button { padding: 15px 25px; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: bold; }
         .btn-red { background-color: #ff3366; color: white; width: 100%; }
         
-        /* PŁYNNY RUCH PRZYCISKU TAK */
+        /* PŁYNNY RUCH PRZYCISKU */
         #y2 { 
             background-color: #28a745; 
             color: white; 
-            z-index: 9999; 
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); /* Wyraźny lot przycisku */
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+            z-index: 9999;
         }
         
         .btn-yes { background-color: #28a745; color: white; }
@@ -32,7 +58,7 @@
 
     <div id="s1" class="container">
         <div class="image-box">
-            <img class="gif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/MDJ9IbMddcW7C/giphy.gif" alt="Kotek">
+            <img class="gif" src="https://media.giphy.com/media/Zl7u48zLVFgLpRwq6f/giphy.gif">
         </div>
         <h1>Hej Liluś, mam pytanie... 🐱</h1>
         <button class="btn-red" onclick="sh(1,2)">Dalej</button>
@@ -40,7 +66,7 @@
 
     <div id="s2" class="container hidden">
         <div class="image-box">
-            <img id="gif2" class="gif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/26ghbWoXv3G6ypo8o/giphy.gif" alt="The Rock">
+            <img id="gif2" class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/H5C8CevNMbpBqNqFpH/giphy.gif">
         </div>
         <h1 id="t2">Jesteś w ciąży? 🤔</h1>
         <div class="buttons">
@@ -52,7 +78,7 @@
 
     <div id="s25" class="container hidden">
         <div class="image-box">
-            <img class="gif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/H5C8CevNMbpBqNqFpH/giphy.gif">
+            <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/26ghbWoXv3G6ypo8o/giphy.gif">
         </div>
         <h1>Dobra teraz tak na serio...</h1>
         <button class="btn-red" onclick="sh(25,3)">Dalej</button>
@@ -60,7 +86,7 @@
 
     <div id="s3" class="container hidden">
         <div class="image-box">
-            <img class="gif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/v8SuonpI3KxTG/giphy.gif">
+            <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/v8SuonpI3KxTG/giphy.gif">
         </div>
         <h1>Zostaniesz moją Walentynką? ❤️</h1>
         <div class="buttons">
@@ -71,7 +97,7 @@
 
     <div id="res" class="container hidden">
         <div class="image-box">
-            <img class="gif" src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/KztT2c4u8mYYUiMKdJ/giphy.gif">
+            <img class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/KztT2c4u8mYYUiMKdJ/giphy.gif">
         </div>
         <h1>SUPER!!! ❤️</h1>
         <p>Wiedziałem! 🥰</p>
@@ -87,7 +113,6 @@
         function moveBtn() {
             const btn = document.getElementById('y2');
             btn.style.position = 'fixed';
-            const m = 100; // Margines bezpieczny
             const x = Math.max(20, Math.random() * (window.innerWidth - btn.offsetWidth - 20));
             const y = Math.max(20, Math.random() * (window.innerHeight - btn.offsetHeight - 20));
             btn.style.left = x + 'px';
@@ -95,16 +120,14 @@
         }
 
         function poko() {
-            document.getElementById('t2').innerText = "To po co kłamiesz kasti";
-            // Zmieniamy GIFa na The Rocka (ten sam link, dla pewności przeładowania)
-            document.getElementById('gif2').src = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/26ghbWoXv3G6ypo8o/giphy.gif"; 
+            document.getElementById('t2').innerHTML = "To po co kłamiesz kasti";
             document.getElementById('y2').classList.add('hidden');
             document.getElementById('n2').classList.add('hidden');
             document.getElementById('next1').classList.remove('hidden');
         }
 
         function grow(){
-            sc += 1.3;
+            sc += 1.4;
             document.getElementById('yB').style.transform = `scale(${sc})`;
         }
         
