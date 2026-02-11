@@ -7,15 +7,16 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         body { margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #fff0f6; font-family: sans-serif; overflow: hidden; }
-        .container { width: 90%; max-width: 400px; background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+        .container { width: 90%; max-width: 400px; background: white; padding: 30px; border-radius: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; position: relative; }
         .image-box { width: 100%; height: 250px; margin-bottom: 20px; border-radius: 20px; overflow: hidden; background-color: #f0f0f0; display: flex; align-items: center; justify-content: center; }
         .gif { width: 100%; height: 100%; object-fit: contain; }
-        h1 { color: #d6336c; font-size: 1.4rem; margin-bottom: 25px; transition: 0.3s; }
+        h1 { color: #d6336c; font-size: 1.4rem; margin-bottom: 25px; }
         .buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
         button { padding: 15px 25px; border: none; border-radius: 50px; cursor: pointer; font-size: 1.1rem; font-weight: bold; transition: 0.2s; }
         .btn-red { background-color: #ff3366; color: white; width: 100%; }
-        .btn-yes { background-color: #28a745; color: white; z-index: 100; }
+        .btn-yes { background-color: #28a745; color: white; }
         .btn-no { background-color: #dc3545; color: white; }
+        #y2 { position: absolute; transition: 0.1s; z-index: 999; }
         .hidden { display: none !important; }
     </style>
 </head>
@@ -30,11 +31,17 @@
     <div id="s2" class="container hidden">
         <div class="image-box"><img id="gif2" class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/26ghbWoXv3G6ypo8o/giphy.gif"></div>
         <h1 id="t2">Jesteś w ciąży? 🤔</h1>
-        <div class="buttons">
-            <button id="y2" class="btn-yes" onclick="zart(true)">Tak</button>
-            <button id="n2" class="btn-no" onclick="zart(false)">Nie</button>
-            <button id="nextAfterZart" class="btn-red hidden" onclick="sh(2,3)">Dalej</button>
+        <div class="buttons" style="min-height: 50px;">
+            <button id="y2" class="btn-yes" onmouseover="moveBtn()" onclick="moveBtn()">Tak</button>
+            <button id="n2" class="btn-no" onclick="poko(false)">Nie</button>
+            <button id="next1" class="btn-red hidden" onclick="sh(2,25)">Dalej</button>
         </div>
+    </div>
+
+    <div id="s25" class="container hidden">
+        <div class="image-box"><img class="gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/H5C8CevNMbpBqNqFpH/giphy.gif"></div>
+        <h1>Dobra, teraz tak na serio... 🤨</h1>
+        <button class="btn-red" onclick="sh(25,3)">Dalej</button>
     </div>
 
     <div id="s3" class="container hidden">
@@ -54,22 +61,31 @@
 
     <script>
         let sc = 1;
-        function sh(c,n){document.getElementById('s'+c).classList.add('hidden');document.getElementById('s'+n).classList.remove('hidden');}
-        function grow(){sc+=0.8;document.getElementById('yB').style.transform=`scale(${sc})`;}
+        function sh(c,n){
+            document.getElementById('s'+c).classList.add('hidden');
+            document.getElementById('s'+n).classList.remove('hidden');
+        }
         
-        function zart(isYes) {
-            if(isYes) {
-                document.getElementById('t2').innerHTML = "Bardzo śmieszne...";
-                document.getElementById('gif2').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/3o7TKK87v6S5S9Zf6U/giphy.gif";
-            } else {
-                document.getElementById('t2').innerHTML = "No tak myślałem 😎";
-                document.getElementById('gif2').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHY5eXJ6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHR6eHImZXA9djFfaW50ZXJuYWxfZ2lmX2J5X2lkJmN0PWc/S9S6Lcs9u3yIsbS0t9/giphy.gif";
-            }
-            document.getElementById('y2').classList.add('hidden');
-            document.getElementById('n2').classList.add('hidden');
-            document.getElementById('nextAfterZart').classList.remove('hidden');
+        function moveBtn() {
+            const btn = document.getElementById('y2');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
         }
 
+        function poko() {
+            document.getElementById('t2').innerHTML = "No to po co kłamiesz? 😂";
+            document.getElementById('y2').classList.add('hidden');
+            document.getElementById('n2').classList.add('hidden');
+            document.getElementById('next1').classList.remove('hidden');
+        }
+
+        function grow(){
+            sc+=0.8;
+            document.getElementById('yB').style.transform=`scale(${sc})`;
+        }
+        
         function f(){
             document.getElementById('s3').classList.add('hidden');
             document.getElementById('res').classList.remove('hidden');
